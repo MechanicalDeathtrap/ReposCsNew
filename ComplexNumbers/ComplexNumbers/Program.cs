@@ -19,6 +19,7 @@ namespace ComplexNumbers
                 ComplexNum minus = new ComplexNum(0, 0);
                 ComplexNum division = new ComplexNum(0, 0);
                 ComplexNum mult = new ComplexNum(0, 0);
+                int a = 10;
 
                 Console.WriteLine(number1);
                 Console.WriteLine(number2);
@@ -35,12 +36,18 @@ namespace ComplexNumbers
                 division.Div(number1, number2);
                 Console.WriteLine($"Division - {division}");
                 
-                Console.WriteLine($"Mod - {number1.GetMod(number1)}");
+                Console.WriteLine($"Mod - {ComplexNum.GetMod(number1)}");
+                Console.WriteLine($"Argument - {ComplexNum.GetArg(number1)}");
 
-                Console.WriteLine($"Argument - {number1.GetArg(number1)}");
-
+                Console.WriteLine($"{number1} + {number2} = {number1 + number2}");
+                Console.WriteLine($"{number1} - {number2} = {number1 - number2}");
+                Console.WriteLine($"{number1} + {a} = {number1 + a}");
+                Console.WriteLine($"{number1} + {number2} = {number1 + number2}");
+                Console.WriteLine($"{number1} / {number2} = {number1 / number2}");
+                Console.WriteLine($"{number1} * {number2} = {number1 * number2}");                
+                Console.WriteLine($"++{number1} = {++number1}");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
