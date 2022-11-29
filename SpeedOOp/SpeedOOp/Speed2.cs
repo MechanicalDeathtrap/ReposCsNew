@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpeedOOp
 {
-    internal class Speed2
+    public class Speed2
     {
         // ПОле
         private double speed1;
@@ -14,9 +14,9 @@ namespace SpeedOOp
         public double KilometrsPerHour
         {
             get { return speed1; }
-            set
+            private set
             {
-                if (speed1 < 0)
+                if (value < 0)
                     throw new ArgumentException("Speed can't be less than zero");
                 speed1 = value;
             }
@@ -24,9 +24,9 @@ namespace SpeedOOp
         public double MetersPerSecond
         {
             get { return speed1; }
-            set
+            private set
             {
-                if (speed1 < 0)
+                if (value < 0)
                     throw new ArgumentException("Speed can't be less than zero");
                 speed1 = (value * 1000) / 3600;
             }
@@ -34,37 +34,34 @@ namespace SpeedOOp
         public double MilesPerHour
         {
             get { return speed1; }
-            set
+            private set
             {
-                if (speed1 < 0)
+                if (value < 0)
                     throw new ArgumentException("Speed can't be less than zero");
-                speed1 = value* 1.609;
+                speed1 = value* 0.62;
             }
         }
         //...................................................................................
         public Speed2(double sp)
         {
-            speed1 = sp;// ms
+            KilometrsPerHour = sp;// ms
         }
-        public static Speed2 KilometerToHour(double sp)//метод мс
+        public static Speed2 KilometerToHour(Speed2 sp)//метод мс
         {
-            return new Speed2(sp);
+            return new Speed2(sp.speed1);
         }
-        public static Speed2 ConvertToMeterToSecond(double ms)//метод кч
+        public static Speed2 ConvertToMeterToSecond(Speed2 ms)//метод кч
         {
-            return new Speed2((int)(ms * 1000) / 3600);
+            return new Speed2((int)(ms.speed1 * 1000) / 3600);
         }
-        public static Speed2 ConvertToMileToHour(double ms)//метод m\
+        public static Speed2 ConvertToMileToHour(Speed2 ms)//метод m\
         {
-            return new Speed2((int)(ms * 1.609));
+            return new Speed2((int)(ms.speed1 * 0.62));
         }
 
         public static Speed2 operator +(Speed2 a, Speed2 b)
         {
-
             var v1 = a.KilometrsPerHour + b.KilometrsPerHour;
-            //var v2= a.MetersPerSecond + b.MetersPerSecond;
-            //var v3 = a.MilesPerHour + b.MilesPerHour;
             return new Speed2(v1);
         }
         public static Speed2 operator -(Speed2 a, Speed2 b)

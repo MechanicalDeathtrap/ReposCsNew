@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SpeedOOp
 {
-    internal class Speed1
+    public class Speed1
     {
         // ПОле
         private double speed;
@@ -15,9 +15,9 @@ namespace SpeedOOp
         public double MeterPerSecond
         {
             get {return speed; }
-            set 
+            private set 
             {
-                if (speed < 0)
+                if (value < 0)
                     throw new ArgumentException("Speed can't be less than zero");
                 speed = value;
             }
@@ -25,9 +25,9 @@ namespace SpeedOOp
         public double KilometrsPerHour
         {
             get { return speed; }
-            set
+            private set
             {
-                if (speed < 0)
+                if (value < 0)
                     throw new ArgumentException("Speed can't be less than zero");
                 speed = (value*3600)/1000;
             }
@@ -35,9 +35,9 @@ namespace SpeedOOp
         public double MilesPerHour
         {
             get { return speed; }
-            set
+            private set
             {
-                if (speed < 0)
+                if (value < 0)
                     throw new ArgumentException("Speed can't be less than zero");
                 speed = ((value * 3600) / 1000)/1.609;
             }
@@ -45,22 +45,21 @@ namespace SpeedOOp
         //...................................................................................
         public Speed1(double sp)
         {
-            speed= sp;// ms
+            MeterPerSecond= sp;// ms
         }
-        public static Speed1 MeterToSec(double sp)//метод мс
+        public static Speed1 MeterToSec(Speed1 sp)//метод мс
         {
-            return new Speed1(sp);
+            return new Speed1(sp.speed);
         }
-        public static Speed1 ConvertToKilometerToHour(double ms)//метод кч
+        public static Speed1 ConvertToKilometerToHour(Speed1 ms)//метод кч
         {
-            return new Speed1((int)(ms * 3600) / 1000);
+            return new Speed1((int)(ms.speed * 3600) / 1000);
         }
-        public static Speed1 ConvertToMileToHour(double ms)//метод m\
+        public static Speed1 ConvertToMileToHour(Speed1 ms)//метод m\
         {
-            return new Speed1((int)(((ms * 3600) / 1000)/1.609));
+            return new Speed1((int)(((ms.speed * 3600) / 1000)/1.609));
         }
         //>.......................................................................................
-
         public static Speed1 operator +(Speed1 a, Speed1 b)
         {
             var v = a.MeterPerSecond + b.MeterPerSecond;
@@ -68,7 +67,7 @@ namespace SpeedOOp
         }
         public static Speed1 operator -(Speed1 a, Speed1 b)
         {
-            var v = a.MeterPerSecond - b.MeterPerSecond;
+            var v = a.KilometrsPerHour - b.KilometrsPerHour;
             return new Speed1(v);
         }
         public override string ToString()

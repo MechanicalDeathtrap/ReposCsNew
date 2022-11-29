@@ -11,28 +11,26 @@ namespace SpeedOOp
         static void Main(string[] args)
         {
             try 
-            { 
-                int t = 67;//int.Parse(Console.ReadLine());
-                Speed1 s2 = Speed1.MeterToSec(t);
+            {
+                Speed1 s2 = new Speed1(67) ;
+                Speed1 s4 = new Speed1(76);
                 Console.WriteLine($"Метры в секунду - {s2}");
-                Speed1 s1 = Speed1.ConvertToKilometerToHour(t);
+                Speed1 s1 = Speed1.ConvertToKilometerToHour(s2);
                 Console.WriteLine($"Километры в час - {s1}");
-                Speed1 s3 = Speed1.ConvertToMileToHour(t);
+                Speed1 s3 = Speed1.ConvertToMileToHour(s2);
                 Console.WriteLine($"Мили в час - {s3}");
 
                 Console.WriteLine();
 
-                int t1 = 15;//int.Parse(Console.ReadLine());
-                Speed2 ss2 = Speed2.KilometerToHour(t1);
+                Speed2 ss2 =new Speed2(15);
                 Console.WriteLine($"Километры в час - {ss2}");
-                Speed2 ss1 = Speed2.ConvertToMeterToSecond(t1);
+                Speed2 ss1 = Speed2.ConvertToMeterToSecond(ss2);
                 Console.WriteLine($"Метры в секунду - {ss1}");
-                Speed2 ss3 = Speed2.ConvertToMileToHour(t1);
+                Speed2 ss3 = Speed2.ConvertToMileToHour(ss2);
                 Console.WriteLine($"Мили в час - {ss3}");
 
-
-                Console.WriteLine(s1 - s2);
-                Console.WriteLine(s1 + s2);
+                Console.WriteLine($"{s4}-{s2}={s4 - s2}");
+                Console.WriteLine($"{s4}+{s2}={s4 + s2}");
             }
             catch(Exception ex)
             { 
