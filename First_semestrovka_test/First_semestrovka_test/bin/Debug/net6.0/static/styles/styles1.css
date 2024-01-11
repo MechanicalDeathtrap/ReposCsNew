@@ -1653,5 +1653,11 @@ section {
   }
 }
 
+.users-wrap{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: lightgray;
+}
 
 /*# sourceMappingURL=styles1.css.map */

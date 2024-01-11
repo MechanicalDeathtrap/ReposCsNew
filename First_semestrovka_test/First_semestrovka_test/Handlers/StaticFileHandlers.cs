@@ -28,7 +28,7 @@ namespace Oris_First_Semestrovka.Handlers
             {
                 if (absoluteUrl.Split('/').Last().Contains('.'))
                 {
-                    var fileExtension = absoluteUrl.Split('/').LastOrDefault();
+                    var fileExtension = absoluteUrl.Split('/').Last();
                     fileExtension = '.' + fileExtension.Split('.').Last();
 
                     if (File.Exists(staticFilePath.Replace("\\", "/")))

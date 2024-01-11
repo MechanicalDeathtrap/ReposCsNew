@@ -8,6 +8,5 @@ class Program
     {
         var server = new Server();
         await server.StartAsync();
-
     }
 }

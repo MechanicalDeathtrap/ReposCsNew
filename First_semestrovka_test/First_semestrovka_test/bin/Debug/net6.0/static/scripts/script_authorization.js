@@ -62,23 +62,17 @@ function GetAjaxResponse(){
 function CreateParagraph(text,  elementID  , image,){
     let div = document.createElement("div");
     div.style.display ='flex';
-    div.style.width = '100%';
+    //div.style.width = '100%';
+    div.style.flexDirection = 'column';
+    div.classList.add('content');
 
-
-    if(text){
-        let paragraph = document.createElement("p");
-        paragraph.innerHTML = text;
-        paragraph.style.width = "80%"
-        div.appendChild(paragraph);
-        //document.getElementById(elementID).appendChild(div);
-    }
     image = (typeof image === "string")? (image.length > 5 ? image : null) : image
 
     if(image){
         let reader = new FileReader();
         let imageElement = document.createElement("img");
 
-        imageElement.style.width = "300px";
+        imageElement.style.width = "250px";
         imageElement.style.display = "flex";
         imageElement.style.justifyContent = "end";
 
@@ -92,6 +86,29 @@ function CreateParagraph(text,  elementID  , image,){
         div.appendChild(imageElement);
         //document.getElementById(elementID).appendChild(imageElement);
     }
+    else {
+        let imageElement = document.createElement("img");
+
+        imageElement.style.width = "250px";
+        imageElement.style.display = "flex";
+        imageElement.style.justifyContent = "end";
+
+        imageElement.src = "./images/open_graph1012022304887324820image.webp" ;
+        div.appendChild(imageElement);
+    }
+
+    if(text){
+        let paragraph = document.createElement("a");
+        paragraph.innerHTML = text;
+        paragraph.href = "http://127.0.0.1:2323/static/index2.html";
+        paragraph.style.textAlign = 'center';
+        paragraph.style.textOverflow = 'ellipsis'
+        div.appendChild(paragraph);
+    }
+
+    document.getElementById(elementID + "-next").style.display = 'flex';
+    document.getElementById(elementID + "-next").style.flexWrap = 'wrap';
+    document.getElementById(elementID + "-next").style.gap = '25px';
     document.getElementById(elementID + "-next").appendChild(div);
 }
 
@@ -106,8 +123,6 @@ function ProcessingData(data, Function){
         console.log("переменная data не определена");
     }
 }
-
-
 
 
 function dataURItoBlob(dataURI) {
